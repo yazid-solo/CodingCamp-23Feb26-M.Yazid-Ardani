@@ -1,275 +1,301 @@
 /**
  * animations.js — Animasi & Efek Visual
- *
- * 1. Scroll reveal via IntersectionObserver
- * 2. Skill bar animation
- * 3. 3D tilt pada card (mouse move)
- * 4. Parallax ringan
- * 5. Three.js hero scene (canvas terkurung di kolom kanan)
- * 6. Counter angka
+ * - Scroll reveal
+ * - Skill bar animation
+ * - Tilt (card) + Magnetic button
+ * - Parallax ringan
+ * - Three.js hero
+ * - Counter angka
  */
 
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// ── 1. Scroll Reveal ──────────────────────────────────────────
+/* ---------- Scroll Reveal ---------- */
 function initScrollReveal() {
+  const els = document.querySelectorAll(".reveal");
+  if (!els.length) return;
+
   if (prefersReducedMotion) {
-    document.querySelectorAll('.reveal').forEach(el => {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    });
+    els.forEach((el) => el.classList.add("visible"));
     return;
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        en.target.classList.add("visible");
+        io.unobserve(en.target);
+      });
+    },
+    { threshold: 0.14, rootMargin: "0px 0px -60px 0px" }
+  );
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  els.forEach((el) => io.observe(el));
 }
 
-// ── 2. Skill Bar Animation ────────────────────────────────────
+/* ---------- Skill Bars ---------- */
 function initSkillBars() {
+  const bars = document.querySelectorAll(".skill-fill");
+  if (!bars.length) return;
+
   if (prefersReducedMotion) {
-    document.querySelectorAll('.skill-fill').forEach(bar => {
-      bar.style.width = bar.dataset.level + '%';
-    });
+    bars.forEach((bar) => (bar.style.width = `${bar.dataset.level || 0}%`));
     return;
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.style.width = (entry.target.dataset.level || 0) + '%';
-        }, 150);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const el = en.target;
+        setTimeout(() => (el.style.width = `${el.dataset.level || 0}%`), 150);
+        io.unobserve(el);
+      });
+    },
+    { threshold: 0.35 }
+  );
 
-  document.querySelectorAll('.skill-fill').forEach(bar => observer.observe(bar));
+  bars.forEach((bar) => io.observe(bar));
 }
 
-// ── 3. 3D Tilt Effect ─────────────────────────────────────────
+/* ---------- Tilt Cards (expose to window for main.js reuse) ---------- */
+function tiltMove(e) {
+  if (prefersReducedMotion) return;
+  const card = e.currentTarget;
+  const rect = card.getBoundingClientRect();
+  const cx = (e.clientX - rect.left) / rect.width - 0.5;
+  const cy = (e.clientY - rect.top) / rect.height - 0.5;
+
+  card.style.transition = "transform 120ms ease";
+  card.style.transform = `perspective(900px) rotateX(${-cy * 8}deg) rotateY(${cx * 12}deg) translateY(-2px)`;
+}
+
+function tiltLeave(e) {
+  const card = e.currentTarget;
+  card.style.transition = "transform 520ms cubic-bezier(0.34,1.56,0.64,1)";
+  card.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px)";
+}
+
 function initTilt() {
   if (prefersReducedMotion) return;
-  document.querySelectorAll('.tilt').forEach(el => {
-    el.addEventListener('mousemove', handleTiltMove);
-    el.addEventListener('mouseleave', handleTiltLeave);
+  document.querySelectorAll(".tilt").forEach((el) => {
+    el.addEventListener("mousemove", tiltMove);
+    el.addEventListener("mouseleave", tiltLeave);
+  });
+}
+window.__tiltMove = tiltMove;
+window.__tiltLeave = tiltLeave;
+
+/* ---------- Magnetic Buttons ---------- */
+function initMagnetic() {
+  if (prefersReducedMotion) return;
+
+  document.querySelectorAll("[data-magnetic]").forEach((btn) => {
+    btn.addEventListener("mousemove", (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - (r.left + r.width / 2);
+      const y = e.clientY - (r.top + r.height / 2);
+      btn.style.transform = `translate(${x * 0.08}px, ${y * 0.08}px)`;
+    });
+    btn.addEventListener("mouseleave", () => {
+      btn.style.transform = "";
+    });
   });
 }
 
-function handleTiltMove(e) {
-  const card = e.currentTarget;
-  const rect = card.getBoundingClientRect();
-  const cx = (e.clientX - rect.left) / rect.width  - 0.5;
-  const cy = (e.clientY - rect.top)  / rect.height - 0.5;
-  card.style.transition = 'transform 0.1s ease';
-  card.style.transform  = `perspective(800px) rotateX(${-cy * 8}deg) rotateY(${cx * 12}deg) scale3d(1.02,1.02,1.02)`;
-}
-
-function handleTiltLeave(e) {
-  const card = e.currentTarget;
-  card.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
-  card.style.transform  = 'perspective(800px) rotateX(0) rotateY(0) scale3d(1,1,1)';
-}
-
-// ── 4. Parallax ───────────────────────────────────────────────
+/* ---------- Parallax ---------- */
 function initParallax() {
   if (prefersReducedMotion) return;
-  const targets = document.querySelectorAll('[data-parallax]');
+  const targets = document.querySelectorAll("[data-parallax]");
   if (!targets.length) return;
 
   let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        const scrollY = window.scrollY;
-        targets.forEach(el => {
-          el.style.transform = `translateY(${scrollY * (parseFloat(el.dataset.parallax) || 0.2)}px)`;
-        });
-        ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      targets.forEach((el) => {
+        const speed = parseFloat(el.dataset.parallax || "0.12");
+        el.style.transform = `translateY(${y * speed}px)`;
       });
-      ticking = true;
-    }
-  }, { passive: true });
+      ticking = false;
+    });
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 }
 
-// ── 5. Three.js Hero Scene ────────────────────────────────────
-/*
-  PENTING: Canvas sekarang hidup di dalam .hero-canvas-col,
-  sehingga ukurannya mengikuti parent-nya — bukan window.
-  Ini yang membuat teks tidak tertimpa lagi.
-*/
+/* ---------- Counters ---------- */
+function initCounters() {
+  if (prefersReducedMotion) return;
+  const els = document.querySelectorAll("[data-count]");
+  if (!els.length) return;
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+
+        const el = en.target;
+        const end = parseInt(el.dataset.count || "0", 10);
+        let startTime = null;
+
+        const step = (ts) => {
+          if (!startTime) startTime = ts;
+          const p = Math.min((ts - startTime) / 1300, 1);
+          const eased = 1 - Math.pow(1 - p, 2);
+          el.textContent = String(Math.floor(eased * end));
+          if (p < 1) requestAnimationFrame(step);
+          else el.textContent = String(end);
+        };
+
+        requestAnimationFrame(step);
+        io.unobserve(el);
+      });
+    },
+    { threshold: 0.6 }
+  );
+
+  els.forEach((el) => io.observe(el));
+}
+
+/* ---------- Three.js Hero ---------- */
 function initHeroThreeJS() {
-  const canvas = document.getElementById('hero-canvas');
+  const canvas = document.getElementById("hero-canvas");
   if (!canvas) return;
 
-  if (typeof THREE === 'undefined') {
-    canvas.style.display = 'none';
-    showHeroFallback();
+  if (typeof THREE === "undefined") {
+    canvas.style.display = "none";
+    const fallback = document.getElementById("hero-fallback");
+    if (fallback) fallback.style.display = "grid";
     return;
   }
 
+  const parent = canvas.parentElement;
+  const getSize = () => {
+    const w = parent ? parent.clientWidth : 420;
+    const h = parent ? parent.clientHeight : 420;
+    return { w, h };
+  };
+
   try {
-    // Ambil ukuran dari elemen parent (kolom kanan hero)
-    const parent = canvas.parentElement;
-    const W = parent ? parent.clientWidth  : 400;
-    const H = parent ? parent.clientHeight : 400;
+    const { w, h } = getSize();
 
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setSize(W, H);
+    renderer.setSize(w, h);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
 
-    const scene  = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 100);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 100);
     camera.position.set(0, 0, 4);
 
-    // Wireframe torus knot — bentuk ikonik futuristik
     const geometry = new THREE.TorusKnotGeometry(1.1, 0.35, 128, 16, 2, 3);
     const material = new THREE.MeshBasicMaterial({
       color: 0x818cf8,
       wireframe: true,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.62,
     });
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
-    // Partikel floating di background
-    const particleGeo  = new THREE.BufferGeometry();
-    const positions    = new Float32Array(80 * 3);
-    for (let i = 0; i < 80 * 3; i++) positions[i] = (Math.random() - 0.5) * 12;
-    particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const particleMat  = new THREE.PointsMaterial({ color: 0x818cf8, size: 0.05, transparent: true, opacity: 0.35 });
-    const particles    = new THREE.Points(particleGeo, particleMat);
+    const particleGeo = new THREE.BufferGeometry();
+    const positions = new Float32Array(100 * 3);
+    for (let i = 0; i < positions.length; i++) positions[i] = (Math.random() - 0.5) * 12;
+    particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+    const particleMat = new THREE.PointsMaterial({
+      color: 0x818cf8,
+      size: 0.05,
+      transparent: true,
+      opacity: 0.33,
+    });
+    const particles = new THREE.Points(particleGeo, particleMat);
     scene.add(particles);
 
-    // Tracking posisi mouse untuk rotasi responsif
-    let mouseX = 0, mouseY = 0;
-    let targetX = 0, targetY = 0;
-    document.addEventListener('mousemove', e => {
-      mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
+    const accentMap = {
+      indigo: 0x818cf8,
+      cyan: 0x22d3ee,
+      emerald: 0x34d399,
+    };
+
+    const htmlEl = document.documentElement;
+    const applyAccentColor = () => {
+      const c = accentMap[htmlEl.getAttribute("data-accent")] || accentMap.indigo;
+      material.color.setHex(c);
+      particleMat.color.setHex(c);
+    };
+    applyAccentColor();
+
+    new MutationObserver(applyAccentColor).observe(htmlEl, {
+      attributes: true,
+      attributeFilter: ["data-accent"],
+    });
+
+    let mouseX = 0,
+      mouseY = 0,
+      tx = 0,
+      ty = 0;
+    document.addEventListener("mousemove", (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
       mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
     });
 
-    // Update warna saat accent berubah
-    const accentColorMap = { indigo: 0x818cf8, cyan: 0x22d3ee, emerald: 0x34d399 };
-    const htmlEl = document.documentElement;
-    new MutationObserver(() => {
-      const c = accentColorMap[htmlEl.getAttribute('data-accent')] || accentColorMap.indigo;
-      material.color.setHex(c);
-      particleMat.color.setHex(c);
-    }).observe(htmlEl, { attributes: true, attributeFilter: ['data-accent'] });
-
-    // Set warna awal
-    const initColor = accentColorMap[htmlEl.getAttribute('data-accent')] || accentColorMap.indigo;
-    material.color.setHex(initColor);
-    particleMat.color.setHex(initColor);
-
-    // Animasi loop
     const clock = new THREE.Clock();
-    function animate() {
-      requestAnimationFrame(animate);
+
+    const loop = () => {
+      requestAnimationFrame(loop);
 
       if (!prefersReducedMotion) {
-        const elapsed = clock.getElapsedTime();
+        const t = clock.getElapsedTime();
         mesh.rotation.x += 0.003;
         mesh.rotation.y += 0.005;
 
-        // Lerp (smooth follow) mouse
-        targetX += (mouseX * 0.4 - targetX) * 0.05;
-        targetY += (mouseY * 0.3 - targetY) * 0.05;
-        mesh.rotation.y += targetX * 0.01;
-        mesh.rotation.x += targetY * 0.01;
+        tx += (mouseX * 0.4 - tx) * 0.05;
+        ty += (mouseY * 0.3 - ty) * 0.05;
+        mesh.rotation.y += tx * 0.012;
+        mesh.rotation.x += ty * 0.012;
 
-        particles.rotation.y = elapsed * 0.04;
-        particles.rotation.x = elapsed * 0.02;
+        particles.rotation.y = t * 0.05;
+        particles.rotation.x = t * 0.03;
 
-        // Efek "bernapas" — scale naik-turun pelan
-        mesh.scale.setScalar(1 + Math.sin(elapsed * 0.8) * 0.02);
+        mesh.scale.setScalar(1 + Math.sin(t * 0.9) * 0.02);
       }
 
       renderer.render(scene, camera);
-    }
-    animate();
+    };
+    loop();
 
-    // Resize: pakai dimensi parent (kolom kanan), bukan window
-    window.addEventListener('resize', () => {
-      const p  = canvas.parentElement;
-      const W2 = p ? p.clientWidth  : canvas.clientWidth;
-      const H2 = p ? p.clientHeight : canvas.clientHeight;
-      if (!W2 || !H2) return;
-      camera.aspect = W2 / H2;
+    // Resize observer (lebih akurat daripada window resize doang)
+    const ro = new ResizeObserver(() => {
+      const s = getSize();
+      if (!s.w || !s.h) return;
+      camera.aspect = s.w / s.h;
       camera.updateProjectionMatrix();
-      renderer.setSize(W2, H2);
+      renderer.setSize(s.w, s.h);
     });
-
+    if (parent) ro.observe(parent);
   } catch (err) {
-    console.warn('Three.js hero gagal:', err);
-    canvas.style.display = 'none';
-    showHeroFallback();
+    console.warn("Three.js hero gagal:", err);
+    canvas.style.display = "none";
+    const fallback = document.getElementById("hero-fallback");
+    if (fallback) fallback.style.display = "grid";
   }
 }
 
-function showHeroFallback() {
-  const fallback = document.getElementById('hero-fallback');
-  if (fallback) fallback.style.display = 'block';
-}
-
-// ── 6. Counter Angka ─────────────────────────────────────────
-function initCounters() {
-  if (prefersReducedMotion) return;
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el  = entry.target;
-      const end = parseInt(el.dataset.count, 10);
-      let start = null;
-      function step(ts) {
-        if (!start) start = ts;
-        const progress = Math.min((ts - start) / 1500, 1);
-        const eased    = 1 - Math.pow(1 - progress, 2);
-        el.textContent = Math.floor(eased * end);
-        if (progress < 1) requestAnimationFrame(step);
-        else el.textContent = end;
-      }
-      requestAnimationFrame(step);
-      observer.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-
-  document.querySelectorAll('[data-count]').forEach(el => observer.observe(el));
-}
-
-// ── Init: dipanggil setelah components selesai inject ─────────
 function initAnimations() {
   initScrollReveal();
   initSkillBars();
   initTilt();
+  initMagnetic();
   initParallax();
   initCounters();
-
-  if (document.getElementById('hero-canvas')) {
-    if (typeof THREE !== 'undefined') {
-      initHeroThreeJS();
-    } else {
-      // Polling singkat jika CDN belum selesai
-      let tries = 0;
-      const check = setInterval(() => {
-        if (typeof THREE !== 'undefined') { clearInterval(check); initHeroThreeJS(); }
-        else if (++tries > 20)            { clearInterval(check); showHeroFallback(); }
-      }, 150);
-    }
-  }
+  initHeroThreeJS();
 }
 
-document.addEventListener('components:ready', initAnimations);
-document.addEventListener('DOMContentLoaded', () => setTimeout(initAnimations, 200));
+document.addEventListener("components:ready", initAnimations);
+document.addEventListener("DOMContentLoaded", () => setTimeout(initAnimations, 200));

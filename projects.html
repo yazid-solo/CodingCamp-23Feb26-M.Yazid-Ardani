@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark" data-accent="indigo">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daftar proyek yang pernah dibuat Muchamad Yazid Ardani — Web, UI, Mini Apps, dan proyek latihan lainnya.">
+  <title>Muchamad Yazid Ardani — Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function() {
+      var t = localStorage.getItem('pf-theme') || 'dark';
+      var a = localStorage.getItem('pf-accent') || 'indigo';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('data-accent', a);
+    })();
+  </script>
+</head>
+<body>
+
+  <div id="nav-container"></div>
+
+  <!-- Project Detail Modal (konten diisi oleh main.js) -->
+  <div id="modal-overlay" role="dialog" aria-modal="true" aria-label="Detail proyek">
+    <div id="modal" tabindex="-1"></div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ══════════════════════════════════
+         PAGE HEADER
+    ═══════════════════════════════════════ -->
+    <section class="section" style="padding-bottom:2rem;" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-tag">Karya & Latihan</p>
+          <h1 class="section-title" id="projects-heading">Semua Proyek</h1>
+          <p class="section-subtitle">
+            Kumpulan proyek yang saya buat sebagai bagian dari proses belajar.
+            Beberapa masih berstatus "in progress" — karena belajar itu tidak pernah benar-benar selesai.
+          </p>
+        </div>
+
+        <!-- Search bar -->
+        <div class="reveal reveal-delay-1">
+          <div class="search-wrap">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+            <input
+              id="project-search"
+              class="search-input"
+              type="search"
+              placeholder="Cari proyek berdasarkan nama atau teknologi..."
+              aria-label="Cari proyek"
+            >
+          </div>
+
+          <!-- Filter buttons -->
+          <div class="filter-bar" role="group" aria-label="Filter kategori proyek">
+            <button class="filter-btn active" data-filter="all" aria-pressed="true">Semua</button>
+            <button class="filter-btn" data-filter="web" aria-pressed="false">Web App</button>
+            <!-- <button class="filter-btn" data-filter="mobile" aria-pressed="false">Mobile App</button>555555555555555555555555555555][[[[[[[[[[[ gbvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv]]]]]]]]]]] -->
+            <button class="filter-btn" data-filter="ui" aria-pressed="false">UI / Design</button>
+            <button class="filter-btn" data-filter="mini-apps" aria-pressed="false">Mini Apps</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         PROJECTS GRID
+         (konten di-render oleh main.js)
+    ═══════════════════════════════════════ -->
+    <section aria-labelledby="projects-grid-label">
+      <div class="container" style="padding-bottom:var(--section-gap);">
+        <h2 id="projects-grid-label" class="sr-only" style="position:absolute;clip:rect(0,0,0,0);">Daftar proyek</h2>
+
+        <div id="all-projects-grid" class="projects-grid">
+          <!-- Skeleton loading saat data belum siap -->
+          <div class="card" style="height:360px;background:var(--bg-3);"></div>
+          <div class="card" style="height:360px;background:var(--bg-3);animation-delay:0.1s;"></div>
+          <div class="card" style="height:360px;background:var(--bg-3);animation-delay:0.2s;"></div>
+          <div class="card" style="height:360px;background:var(--bg-3);animation-delay:0.3s;"></div>
+          <div class="card" style="height:360px;background:var(--bg-3);animation-delay:0.4s;"></div>
+          <div class="card" style="height:360px;background:var(--bg-3);animation-delay:0.5s;"></div>
+        </div>
+
+        <!-- Note tentang proyek -->
+        <div class="card reveal" style="margin-top:2.5rem;background:var(--accent-glow);border-color:var(--accent-border);display:flex;align-items:flex-start;gap:1rem;">
+          <span style="font-size:1.5rem;flex-shrink:0;" aria-hidden="true">💡</span>
+          <div>
+            <strong style="font-size:0.9rem;display:block;margin-bottom:0.25rem;">Catatan Jujur</strong>
+            <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.65;">
+              Semua proyek di sini adalah hasil belajar mandiri dan proyek akademik. Link demo dan GitHub
+              masih dalam proses pengerjaan dan akan diperbarui secara berkala. Saya tidak akan mengklaim
+              pengalaman yang belum saya miliki.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script defer src="js/theme.js"></script>
+  <script defer src="js/components.js"></script>
+  <script defer src="js/animations.js"></script>
+  <script defer src="js/main.js"></script>
+</body>
+</html>

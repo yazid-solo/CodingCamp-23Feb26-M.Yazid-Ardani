@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark" data-accent="indigo">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portofolio Muchamad Yazid Ardani — Mahasiswa Informatika semester 4, Universitas Nahdlatul Ulama Yogyakarta.">
+  <title>Yazid Ardani — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Terapkan tema sebelum render untuk cegah flash -->
+  <script>
+    (function() {
+      var t = localStorage.getItem('pf-theme')  || 'dark';
+      var a = localStorage.getItem('pf-accent') || 'indigo';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('data-accent', a);
+    })();
+  </script>
+</head>
+<body>
+
+  <div id="nav-container"></div>
+
+  <main id="main-content">
+
+    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <section id="hero" aria-label="Hero section">
+
+      <!-- Grid titik-titik dekorasi di latar belakang -->
+      <div class="hero-bg-grid" aria-hidden="true"></div>
+
+      <!--
+        Layout dua kolom:
+        - .hero-text-col  → semua teks (kiri)
+        - .hero-canvas-col → canvas Three.js (kanan)
+        Sehingga keduanya tidak pernah overlap.
+      -->
+      <div class="hero-content">
+
+        <!-- Kolom Kiri: Teks -->
+        <div class="hero-text-col">
+          <div class="hero-badge" aria-label="Status mahasiswa aktif">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            Mahasiswa Informatika · Semester 4 · UNU Yogyakarta
+          </div>
+
+          <h1 class="hero-name">
+            Halo, saya<br>
+            <span>Yazid Ardani</span>
+          </h1>
+
+          <p class="hero-tagline">
+            Mahasiswa yang sedang serius belajar
+            <strong style="color:var(--text-dim)">web development</strong> dan
+            <strong style="color:var(--text-dim)">UI design</strong>.
+            Tiap proyek adalah ruang belajar yang jujur —
+            saya percaya konsistensi mengalahkan bakat.
+          </p>
+
+          <div class="hero-cta">
+            <a href="projects.html" class="btn btn-primary">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M3 7h18M3 12h18M3 17h18"/>
+              </svg>
+              Lihat Projects
+            </a>
+            <a href="contact.html" class="btn btn-outline">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              Hubungi Saya
+            </a>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Canvas 3D (terkurung dalam kotak ini) -->
+        <div class="hero-canvas-col" aria-hidden="true">
+          <canvas id="hero-canvas"></canvas>
+
+          <!-- Fallback jika Three.js gagal load dari CDN -->
+          <div id="hero-fallback" style="display:none;width:180px;height:180px;">
+            <div style="width:100%;height:100%;transform-style:preserve-3d;animation:spin 8s linear infinite;">
+              <div style="position:absolute;inset:0;border:2px solid var(--accent-border);border-radius:50%;transform:rotateX(70deg);"></div>
+              <div style="position:absolute;inset:12px;border:1.5px solid var(--accent-border);border-radius:50%;transform:rotateY(70deg);opacity:0.6;"></div>
+              <div style="position:absolute;inset:24px;border:1px solid var(--accent-border);border-radius:50%;opacity:0.35;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll hint di bagian bawah -->
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span>scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ═════════════ HIGHLIGHT SECTION ════════════ -->
+    <section class="section" aria-labelledby="highlight-heading">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-tag">Fokus Saat Ini</p>
+          <h2 class="section-title" id="highlight-heading">Yang Sedang Saya Pelajari</h2>
+          <p class="section-subtitle">
+            Masih dalam proses belajar yang konsisten. Ini area yang sedang saya tekuni dengan sungguh-sungguh.
+          </p>
+        </div>
+
+        <div class="highlight-grid">
+          <div class="highlight-card reveal reveal-delay-1">
+            <div class="highlight-icon" aria-hidden="true">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
+              </svg>
+            </div>
+            <h3 style="font-size:1.05rem;margin-bottom:0.5rem;">Web Dev Dasar</h3>
+            <p style="font-size:0.875rem;">HTML semantik, CSS modern, dan Vanilla JavaScript. Fondasi yang saya bangun dengan sabar sebelum lompat ke framework.</p>
+          </div>
+
+          <div class="highlight-card reveal reveal-delay-2">
+            <div class="highlight-icon" aria-hidden="true">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/>
+              </svg>
+            </div>
+            <h3 style="font-size:1.05rem;margin-bottom:0.5rem;">UI yang Rapi</h3>
+            <p style="font-size:0.875rem;">Belajar prinsip desain visual — spacing, tipografi, kontras warna, dan hierarki yang membuat antarmuka enak dipandang.</p>
+          </div>
+
+          <div class="highlight-card reveal reveal-delay-3">
+            <div class="highlight-icon" aria-hidden="true">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/>
+              </svg>
+            </div>
+            <h3 style="font-size:1.05rem;margin-bottom:0.5rem;">Problem Solving</h3>
+            <p style="font-size:0.875rem;">Berlatih algoritma dan logika pemrograman. Masih di level dasar, tapi tiap hari sedikit lebih baik dari kemarin.</p>
+          </div>
+
+          <div class="highlight-card reveal reveal-delay-4">
+            <div class="highlight-icon" aria-hidden="true">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 style="font-size:1.05rem;margin-bottom:0.5rem;">Version Control</h3>
+            <p style="font-size:0.875rem;">Belajar Git dan GitHub untuk mengelola kode, berkolaborasi, dan mendokumentasikan perjalanan belajar dengan rapi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ QUICK STATS ════════════════ -->
+    <section class="section" style="padding-top:0" aria-label="Statistik singkat">
+      <div class="container">
+        <div class="stats-grid reveal">
+          <div class="stat-item">
+            <div class="stat-value" data-count="4">4</div>
+            <div class="stat-label">Semester Aktif</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" data-count="6">6</div>
+            <div class="stat-label">Proyek Selesai</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" data-count="8">8</div>
+            <div class="stat-label">Tools Dipelajari</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">∞</div>
+            <div class="stat-label">Semangat Belajar</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ FEATURED PROJECTS ════════════ -->
+    <section class="section" aria-labelledby="featured-heading">
+      <div class="container">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;" class="reveal">
+          <div>
+            <p class="section-tag">Karya Terbaru</p>
+            <h2 class="section-title" id="featured-heading">Featured Projects</h2>
+          </div>
+          <a href="projects.html" class="btn btn-ghost">Lihat semua →</a>
+        </div>
+        <!-- Diisi oleh main.js dari projects.json -->
+        <div id="featured-projects-grid" class="projects-grid"></div>
+      </div>
+    </section>
+
+    <!-- ══════════════ TOOLS I USE ═════════════════ -->
+    <section class="section" style="padding-top:0" aria-labelledby="tools-heading">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-tag">Ekosistem</p>
+          <h2 class="section-title" id="tools-heading" style="margin-bottom:0.75rem;">Tools yang Saya Pakai</h2>
+          <p class="section-subtitle" style="margin-bottom:2rem;">
+            Koleksi teknologi yang sedang aktif saya pelajari dan gunakan dalam proyek-proyek latihan.
+          </p>
+        </div>
+        <div class="tools-grid reveal">
+          <span class="tool-chip"><span class="tool-chip-dot"></span>HTML5</span>
+          <span class="tool-chip"><span class="tool-chip-dot"></span>CSS3</span>
+          <span class="tool-chip"><span class="tool-chip-dot"></span>JavaScript (ES6+)</span>
+          <span class="tool-chip"><span class="tool-chip-dot"></span>Tailwind CSS</span>
+          <span class="tool-chip"><span class="tool-chip-dot"></span>Git & GitHub</span>
+          <span class="tool-chip"><span class="tool-chip-dot"></span>VS Code</span>
+          <span class="tool-chip"><span class="tool-chip-dot"></span>Figma (belajar)</span>
+          <span class="tool-chip"><span class="tool-chip-dot"></span>Linux / Terminal</span>
+          <span class="tool-chip"><span class="tool-chip-dot"></span>Chrome DevTools</span>
+          <span class="tool-chip"><span class="tool-chip-dot"></span>Postman</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ CTA SECTION ══════════════ -->
+    <section class="section" style="padding-top:0" aria-label="Call to action">
+      <div class="container">
+        <div class="card card-glass reveal" style="text-align:center;padding:4rem 2rem;border-color:var(--accent-border);box-shadow:var(--shadow-glow);">
+          <p class="section-tag" style="justify-content:center;margin-bottom:1rem;">Mari Berkolaborasi</p>
+          <h2 style="margin-bottom:1rem;font-size:clamp(1.5rem,3vw,2.25rem);">Ada Project atau Diskusi Menarik?</h2>
+          <p style="color:var(--text-muted);max-width:480px;margin:0 auto 2rem;">
+            Saya selalu terbuka untuk belajar hal baru, berkolaborasi, atau sekadar ngobrol tentang web dev. Jangan ragu untuk menghubungi!
+          </p>
+          <a href="contact.html" class="btn btn-primary" style="font-size:1rem;padding:0.875rem 2rem;">
+            Hubungi Saya
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-container"></div>
+
+  <!-- Three.js harus di-load sebelum animations.js memanggilnya -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script defer src="js/theme.js"></script>
+  <script defer src="js/components.js"></script>
+  <script defer src="js/animations.js"></script>
+  <script defer src="js/main.js"></script>
+</body>
+</html>

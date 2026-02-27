@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "title": "SiBuku - Ecommerce",
+    "slug": "sibuku-ecommerce",
+    "category": "web",
+    "description": "Situs ecommerce sederhana untuk menjual berbagai macam buku, dengan fitur pencarian, filter kategori, dan halaman detail produk. Dibuat menggunakan next.js, Fast API , Supabase dan integrasi API eksternal.",
+    "longDescription": "Proyek ini adalah implementasi pertama saya menggunakan Next.js untuk membangun aplikasi full-stack. Backend dibangun dengan FastAPI, dan data disimpan di Supabase. Saya juga mendeploy aplikasi ini di Vercel untuk pengalaman end-to-end.",
+    "features": [
+      "Halaman produk dengan filter kategori",
+      "Halaman detail produk dengan deskripsi lengkap",
+      "Pencarian produk dengan fitur autocomplete",
+      "Integrasi API eksternal untuk data buku",
+      "Desain responsif untuk desktop dan mobile"
+    ],
+    "tech": ["Next.js", "FastAPI", "Supabase", "Tailwind CSS", "Vercel"],
+    "image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80",
+    "demo": "https://si-buku-sigma.vercel.app/",
+    "github": "https://github.com/yazid-solo/SiBuku",
+    "status": "completed",
+    "year": 2026
+  },
+  {
+    "id": 2,
+    "title": "Task Manager App",
+    "slug": "task-manager",
+    "category": "web",
+    "description": "Aplikasi manajemen tugas sederhana dengan fitur drag-and-drop, kategori label, dan persistensi data menggunakan localStorage. Dibuat untuk belajar DOM manipulation dan event handling secara mendalam.",
+    "longDescription": "Fokus utama proyek ini adalah memahami cara kerja DOM secara mendalam — event bubbling, delegation, dan dynamic element creation. Drag-and-drop diimplementasikan dengan HTML5 Drag and Drop API native tanpa library eksternal.",
+    "features": [
+      "CRUD task (tambah, edit, hapus)",
+      "Drag-and-drop reorder tasks",
+      "Filter berdasarkan status (All / Active / Done)",
+      "Persistensi data via localStorage",
+      "Deadline reminder dengan indikator warna"
+    ],
+    "tech": ["HTML", "CSS", "Vanilla JS", "localStorage", "HTML5 DnD API"],
+    "image": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=80",
+    "demo": "#",
+    "github": "#",
+    "status": "completed",
+    "year": 2024
+  },
+  {
+    "id": 3,
+    "title": "UI Component Library",
+    "slug": "ui-component-library",
+    "category": "ui",
+    "description": "Kumpulan komponen UI yang saya buat sebagai referensi pribadi: button variants, card styles, modal, toast notification, dan form elements. Semuanya dibuat murni dengan CSS dan sedikit JS.",
+    "longDescription": "Proyek ini lahir dari kebutuhan pribadi untuk punya 'toolkit' komponen yang bisa langsung copy-paste. Setiap komponen didokumentasikan dengan contoh kode inline. Belajar banyak tentang CSS custom properties, BEM naming, dan accessibility (keyboard nav, ARIA).",
+    "features": [
+      "20+ komponen siap pakai",
+      "Dark dan light mode untuk setiap komponen",
+      "Kode contoh inline yang bisa di-copy",
+      "Keyboard accessible (tab, enter, escape)",
+      "Zero dependency"
+    ],
+    "tech": ["HTML", "CSS Custom Properties", "Vanilla JS", "ARIA"],
+    "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80",
+    "demo": "#",
+    "github": "#",
+    "status": "in-progress",
+    "year": 2024
+  },
+  {
+    "id": 4,
+    "title": "Quiz Interaktif",
+    "slug": "quiz-app",
+    "category": "mini-apps",
+    "description": "Aplikasi kuis berbasis browser dengan sistem skor, timer per soal, dan hasil akhir animasi. Data soal disimpan di JSON sehingga mudah dikustomisasi. Dibuat untuk praktikum mata kuliah Pemrograman Web.",
+    "longDescription": "Tugas ini mengajarkan saya cara mengelola state aplikasi yang lebih kompleks — melacak waktu, skor, dan urutan pertanyaan secara bersamaan. Saya juga belajar cara mengacak array (Fisher-Yates shuffle) dan membuat progress bar animasi dengan CSS.",
+    "features": [
+      "Timer countdown per soal",
+      "Sistem skor dengan feedback visual",
+      "Soal acak (Fisher-Yates shuffle)",
+      "Ringkasan hasil di akhir kuis",
+      "Data soal dari file JSON"
+    ],
+    "tech": ["HTML", "CSS", "Vanilla JS", "JSON"],
+    "image": "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=600&q=80",
+    "demo": "#",
+    "github": "#",
+    "status": "completed",
+    "year": 2023
+  },
+  {
+    "id": 5,
+    "title": "Landing Page - Kafe Fiktif",
+    "slug": "landing-page-kafe",
+    "category": "ui",
+    "description": "Landing page untuk kafe fiktif 'Ruang Dua Tujuh' sebagai latihan desain dan layout. Menggunakan Tailwind CSS dengan pendekatan mobile-first dan animasi scroll reveal buatan sendiri.",
+    "longDescription": "Tantangan utama proyek ini adalah membuat desain yang terasa 'nyata' dan bisa dipakai oleh bisnis sungguhan. Saya belajar tentang hierarki visual, pemilihan warna yang kohesif, dan cara membuat layout asimetris yang tetap rapi.",
+    "features": [
+      "Desain mobile-first yang responsif",
+      "Animasi scroll reveal dengan IntersectionObserver",
+      "Section menu dengan grid masonry sederhana",
+      "Formulir reservasi dengan validasi JS",
+      "Integrasi Google Maps embed"
+    ],
+    "tech": ["HTML", "Tailwind CSS", "Vanilla JS", "IntersectionObserver API"],
+    "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80",
+    "demo": "#",
+    "github": "#",
+    "status": "completed",
+    "year": 2024
+  },
+  {
+    "id": 6,
+    "title": "Kalkulator Ilmiah",
+    "slug": "scientific-calculator",
+    "category": "mini-apps",
+    "description": "Kalkulator dengan mode standar dan ilmiah, mendukung operasi trigonometri, logaritma, dan ekspresi matematika sederhana. Proyek pertama saya yang serius dengan vanilla JavaScript.",
+    "longDescription": "Proyek awal yang mengajarkan fundamental JS: event handling, string parsing, dan state management sederhana. Saya sengaja tidak pakai eval() untuk ekspresi, melainkan menulis parser ekspresi sederhana sendiri — walaupun masih terbatas.",
+    "features": [
+      "Mode standar dan ilmiah",
+      "Fungsi sin, cos, tan, log, sqrt",
+      "Riwayat kalkulasi (terakhir 10 operasi)",
+      "Keyboard shortcut support",
+      "Desain neumorphism"
+    ],
+    "tech": ["HTML", "CSS", "Vanilla JS"],
+    "image": "https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=600&q=80",
+    "demo": "#",
+    "github": "#",
+    "status": "completed",
+    "year": 2023
+  }
+]

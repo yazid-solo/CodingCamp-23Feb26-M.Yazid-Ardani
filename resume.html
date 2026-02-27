@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark" data-accent="indigo">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Resume Muchamad Yazid Ardani — Skills, pengalaman akademik, dan informasi kontak.">
+  <title>Yazid Ardani — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function() {
+      var t = localStorage.getItem('pf-theme') || 'dark';
+      var a = localStorage.getItem('pf-accent') || 'indigo';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('data-accent', a);
+    })();
+  </script>
+</head>
+<body>
+
+  <div id="nav-container"></div>
+
+  <main id="main-content">
+
+    <!-- ══════════════════════════════════
+         PAGE HEADER
+    ═══════════════════════════════════════ -->
+    <section class="section" style="padding-bottom:2rem;" aria-labelledby="resume-heading">
+      <div class="container">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;" class="reveal">
+          <div>
+            <p class="section-tag">Profil Profesional</p>
+            <h1 class="section-title" id="resume-heading">Resume</h1>
+            <p style="color:var(--text-muted);max-width:520px;line-height:1.7;font-size:0.95rem;">
+              Ringkasan jujur tentang kemampuan dan pengalaman saya.
+              Level skill ditampilkan apa adanya — tidak ada klaim yang melebihi kenyataan.
+            </p>
+          </div>
+          <a
+            href="#"
+            class="btn btn-outline"
+            onclick="window.showToast('CV dalam format PDF sedang disiapkan. Hubungi saya langsung untuk versi terbaru.'); return false;"
+            aria-label="Download CV (segera tersedia)"
+          >
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download CV
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         RINGKASAN PROFIL
+    ═══════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+      <div class="container" style="margin-bottom:3rem;">
+        <div class="card card-glass reveal" style="border-color:var(--accent-border);">
+          <h2 id="summary-heading" class="resume-section-title">Ringkasan</h2>
+          <p style="font-size:0.95rem;line-height:1.8;color:var(--text-dim);">
+            Mahasiswa aktif semester 4 Program Studi Informatika di Universitas Nahdlatul Ulama Yogyakarta.
+            Memiliki minat kuat pada pengembangan web dan desain antarmuka. Saat ini masih dalam tahap
+            belajar intensif — membangun fondasi yang solid di HTML, CSS, dan JavaScript sebelum beralih
+            ke framework. Saya mencari pengalaman dan kolaborasi yang memungkinkan saya terus berkembang
+            sambil memberikan kontribusi nyata dalam tim.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         SKILLS
+    ═══════════════════════════════════════ -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <div class="container" style="margin-bottom:3rem;">
+        <h2 id="skills-heading" class="resume-section-title reveal">Skills & Kemampuan</h2>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;" class="reveal">
+
+          <!-- Frontend -->
+          <div>
+            <p style="font-size:0.8rem;font-family:var(--font-mono);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.5rem;">Frontend</p>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">HTML & CSS</span>
+                <span class="skill-level">Intermediate</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-level="68" style="width:0%"></div></div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">JavaScript (ES6+)</span>
+                <span class="skill-level">Beginner–Intermediate</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-level="52" style="width:0%"></div></div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Tailwind CSS</span>
+                <span class="skill-level">Beginner</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-level="45" style="width:0%"></div></div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Responsive Design</span>
+                <span class="skill-level">Intermediate</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-level="60" style="width:0%"></div></div>
+            </div>
+          </div>
+
+          <!-- Tools & Lainnya -->
+          <div>
+            <p style="font-size:0.8rem;font-family:var(--font-mono);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.5rem;">Tools & Lainnya</p>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Git & GitHub</span>
+                <span class="skill-level">Beginner</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-level="40" style="width:0%"></div></div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">VS Code</span>
+                <span class="skill-level">Intermediate</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-level="70" style="width:0%"></div></div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Figma (UI Design)</span>
+                <span class="skill-level">Beginner</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-level="30" style="width:0%"></div></div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Python Dasar</span>
+                <span class="skill-level">Beginner</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-level="35" style="width:0%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Catatan level -->
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-top:1.5rem;font-style:italic;" class="reveal">
+          * Level skill dinilai berdasarkan kemampuan praktis saya saat ini, bukan jam belajar atau sertifikasi.
+          Penilaian ini bersifat jujur dan subjektif.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         PENGALAMAN
+    ═══════════════════════════════════════ -->
+    <section aria-labelledby="experience-heading">
+      <div class="container" style="margin-bottom:3rem;">
+        <h2 id="experience-heading" class="resume-section-title reveal">Pengalaman & Proyek Akademik</h2>
+
+        <div class="experience-item reveal">
+          <div class="experience-meta">
+            <span class="experience-title">Pengembangan Website Portofolio</span>
+            <span class="experience-date">2024</span>
+          </div>
+          <div class="experience-company">Proyek Pribadi · Inisiatif Mandiri</div>
+          <p class="experience-desc">
+            Merancang dan mengembangkan website portofolio pribadi menggunakan HTML, CSS, JavaScript, dan
+            Tailwind CSS. Fokus pada responsivitas, aksesibilitas, dan performa. Belajar tentang
+            struktur proyek yang maintainable dan teknik CSS modern seperti custom properties dan glassmorphism.
+          </p>
+        </div>
+
+        <div class="experience-item reveal reveal-delay-1">
+          <div class="experience-meta">
+            <span class="experience-title">Praktikum Pemrograman Web</span>
+            <span class="experience-date">2024</span>
+          </div>
+          <div class="experience-company">Universitas Nahdlatul Ulama Yogyakarta · Mata Kuliah</div>
+          <p class="experience-desc">
+            Menyelesaikan berbagai tugas praktikum yang mencakup pembuatan form validasi, manipulasi DOM,
+            fetch API, dan integrasi data JSON. Setiap tugas dikerjakan dari nol tanpa template untuk
+            memaksimalkan pemahaman konsep.
+          </p>
+        </div>
+
+        <div class="experience-item reveal reveal-delay-2">
+          <div class="experience-meta">
+            <span class="experience-title">Proyek Kalkulator & Quiz App</span>
+            <span class="experience-date">2023 – 2024</span>
+          </div>
+          <div class="experience-company">Latihan Mandiri · Vanilla JavaScript</div>
+          <p class="experience-desc">
+            Membangun beberapa mini aplikasi sebagai latihan JavaScript: kalkulator dengan mode ilmiah,
+            aplikasi kuis dengan timer, dan task manager dengan localStorage. Setiap proyek dimulai
+            dengan menulis pseudocode terlebih dahulu untuk melatih pola pikir problem solving.
+          </p>
+        </div>
+
+        <div class="experience-item reveal reveal-delay-3">
+          <div class="experience-meta">
+            <span class="experience-title">Belajar Desain dengan Figma</span>
+            <span class="experience-date">2024 – Sekarang</span>
+          </div>
+          <div class="experience-company">Self-learning · Figma Community Tutorials</div>
+          <p class="experience-desc">
+            Mulai mempelajari dasar-dasar desain UI/UX menggunakan Figma. Saat ini masih di tahap
+            memahami konsep wireframe, komponen, dan auto-layout. Belum ada portofolio desain yang
+            selesai, tapi terus berlatih setiap minggu.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         PENDIDIKAN (SINGKAT)
+    ═══════════════════════════════════════ -->
+    <section aria-labelledby="edu-heading">
+      <div class="container" style="margin-bottom:3rem;">
+        <h2 id="edu-heading" class="resume-section-title reveal">Pendidikan</h2>
+
+        <div class="experience-item reveal">
+          <div class="experience-meta">
+            <span class="experience-title">S1 Informatika</span>
+            <span class="experience-date">2023 – Sekarang</span>
+          </div>
+          <div class="experience-company">Universitas Nahdlatul Ulama Yogyakarta · Fakultas Teknologi Informasi</div>
+          <p class="experience-desc">Semester 4 · Sedang berjalan · Fokus pada pemrograman web dan pengembangan perangkat lunak.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         SOFT SKILLS
+    ═══════════════════════════════════════ -->
+    <section aria-labelledby="soft-heading">
+      <div class="container" style="margin-bottom:var(--section-gap);">
+        <h2 id="soft-heading" class="resume-section-title reveal">Soft Skills</h2>
+
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;" class="reveal">
+          <span class="tech-tag" style="font-size:0.875rem;padding:6px 14px;">🎯 Kemauan Belajar Tinggi</span>
+          <span class="tech-tag" style="font-size:0.875rem;padding:6px 14px;">📖 Kemampuan Riset Mandiri</span>
+          <span class="tech-tag" style="font-size:0.875rem;padding:6px 14px;">🤝 Bekerja dalam Tim</span>
+          <span class="tech-tag" style="font-size:0.875rem;padding:6px 14px;">⏰ Manajemen Waktu Dasar</span>
+          <span class="tech-tag" style="font-size:0.875rem;padding:6px 14px;">💬 Komunikasi Tertulis</span>
+          <span class="tech-tag" style="font-size:0.875rem;padding:6px 14px;">🔍 Perhatian pada Detail</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script defer src="js/theme.js"></script>
+  <script defer src="js/components.js"></script>
+  <script defer src="js/animations.js"></script>
+  <script defer src="js/main.js"></script>
+</body>
+</html>

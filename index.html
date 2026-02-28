@@ -1,37 +1,43 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="dark" data-accent="indigo">
+<html lang="id" data-theme="dark" data-accent="indigo" data-layout="wide">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portofolio Muchamad Yazid Ardani — Mahasiswa Informatika semester 4, Universitas Nahdlatul Ulama Yogyakarta.">
   <title>Yazid Ardani — Home</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Tailwind (boleh tetap dipakai, tapi layout utama ditangani CSS kamu) -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Phosphor icons (untuk icon di konten page) -->
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
   <link rel="stylesheet" href="css/styles.css">
-  
+
+  <!-- Apply theme/accent lebih awal (hindari FOUC) -->
   <script>
-    (function() {
-      var t = localStorage.getItem('pf-theme')  || 'dark';
+    (function () {
+      var t = localStorage.getItem('pf-theme') || 'dark';
       var a = localStorage.getItem('pf-accent') || 'indigo';
       document.documentElement.setAttribute('data-theme', t);
       document.documentElement.setAttribute('data-accent', a);
     })();
   </script>
 </head>
-<body>
 
+<body>
+  <!-- Navbar injected by components.js -->
   <div id="nav-container"></div>
 
   <main id="main-content">
-
+    <!-- HERO -->
     <section id="hero" aria-label="Hero section">
-
-      <div class="hero-bg-grid" aria-hidden="true"></div>
+      <div class="hero-bg-grid" aria-hidden="true" data-parallax="0.6"></div>
 
       <div class="hero-content">
-
         <div class="hero-text-col">
           <div class="hero-badge" aria-label="Status mahasiswa aktif">
             <span class="hero-badge-dot" aria-hidden="true"></span>
@@ -40,7 +46,7 @@
 
           <h1 class="hero-name">
             Halo, saya<br>
-            <span>Yazid Ardani</span>
+            <span>Muchamad Yazid Ardani</span>
           </h1>
 
           <p class="hero-tagline">
@@ -52,18 +58,20 @@
           </p>
 
           <div class="hero-cta">
-            <a href="projects.html" class="btn btn-primary flex items-center gap-2">
+            <a href="projects.html" class="btn btn-primary flex items-center gap-2" data-magnetic>
               <i class="ph ph-folder-open text-lg"></i>
               Lihat Projects
             </a>
-            <a href="contact.html" class="btn btn-outline flex items-center gap-2">
+
+            <a href="contact.html" class="btn btn-outline flex items-center gap-2" data-magnetic>
               <i class="ph ph-envelope-simple text-lg"></i>
               Hubungi Saya
             </a>
           </div>
         </div>
 
-        <div class="hero-canvas-col" aria-hidden="true">
+        <!-- kasih .tilt biar canvas container ikut 3D -->
+        <div class="hero-canvas-col tilt" aria-hidden="true" data-tilt-rx="8" data-tilt-ry="10" data-tilt-lift="-6">
           <canvas id="hero-canvas"></canvas>
 
           <div id="hero-fallback" style="display:none;width:180px;height:180px;">
@@ -74,7 +82,6 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <div class="hero-scroll-hint" aria-hidden="true">
@@ -83,6 +90,7 @@
       </div>
     </section>
 
+    <!-- HIGHLIGHTS -->
     <section class="section" aria-labelledby="highlight-heading">
       <div class="container">
         <div class="reveal">
@@ -94,54 +102,55 @@
         </div>
 
         <div class="highlight-grid">
-          <div class="highlight-card reveal reveal-delay-1">
-            <div class="highlight-icon text-3xl mb-4 text-[var(--accent-color)]" aria-hidden="true">
+          <div class="highlight-card tilt reveal reveal-delay-1" data-tilt-rx="9" data-tilt-ry="12">
+            <div class="highlight-icon text-3xl mb-4" style="color:var(--accent)" aria-hidden="true">
               <i class="ph ph-browser"></i>
             </div>
-            <h3 style="font-size:1.05rem;margin-bottom:0.5rem;">Web Dev Dasar</h3>
-            <p style="font-size:0.875rem;">HTML semantik, CSS modern, dan Vanilla JavaScript. Fondasi yang saya bangun dengan sabar sebelum lompat ke framework.</p>
+            <h3 style="font-size:1.1rem;margin-bottom:0.55rem;">Web Dev Dasar</h3>
+            <p>HTML semantik, CSS modern, dan Vanilla JavaScript. Fondasi yang saya bangun dengan sabar sebelum lompat ke framework.</p>
           </div>
 
-          <div class="highlight-card reveal reveal-delay-2">
+          <div class="highlight-card tilt reveal reveal-delay-2" data-tilt-rx="9" data-tilt-ry="12">
             <div class="highlight-icon text-3xl mb-4 text-purple-500" aria-hidden="true">
               <i class="ph ph-paint-brush-broad"></i>
             </div>
-            <h3 style="font-size:1.05rem;margin-bottom:0.5rem;">UI yang Rapi</h3>
-            <p style="font-size:0.875rem;">Belajar prinsip desain visual — spacing, tipografi, kontras warna, dan hierarki yang membuat antarmuka enak dipandang.</p>
+            <h3 style="font-size:1.1rem;margin-bottom:0.55rem;">UI yang Rapi</h3>
+            <p>Belajar prinsip desain visual — spacing, tipografi, kontras warna, dan hierarki yang membuat antarmuka enak dipandang.</p>
           </div>
 
-          <div class="highlight-card reveal reveal-delay-3">
+          <div class="highlight-card tilt reveal reveal-delay-3" data-tilt-rx="9" data-tilt-ry="12">
             <div class="highlight-icon text-3xl mb-4 text-emerald-500" aria-hidden="true">
               <i class="ph ph-lightbulb"></i>
             </div>
-            <h3 style="font-size:1.05rem;margin-bottom:0.5rem;">Problem Solving</h3>
-            <p style="font-size:0.875rem;">Berlatih algoritma dan logika pemrograman. Masih di level dasar, tapi tiap hari sedikit lebih baik dari kemarin.</p>
+            <h3 style="font-size:1.1rem;margin-bottom:0.55rem;">Problem Solving</h3>
+            <p>Berlatih algoritma dan logika pemrograman. Masih di level dasar, tapi tiap hari sedikit lebih baik dari kemarin.</p>
           </div>
 
-          <div class="highlight-card reveal reveal-delay-4">
+          <div class="highlight-card tilt reveal reveal-delay-4" data-tilt-rx="9" data-tilt-ry="12">
             <div class="highlight-icon text-3xl mb-4 text-orange-500" aria-hidden="true">
               <i class="ph ph-git-branch"></i>
             </div>
-            <h3 style="font-size:1.05rem;margin-bottom:0.5rem;">Version Control</h3>
-            <p style="font-size:0.875rem;">Belajar Git dan GitHub untuk mengelola kode, berkolaborasi, dan mendokumentasikan perjalanan belajar dengan rapi.</p>
+            <h3 style="font-size:1.1rem;margin-bottom:0.55rem;">Version Control</h3>
+            <p>Belajar Git dan GitHub untuk mengelola kode, berkolaborasi, dan mendokumentasikan perjalanan belajar dengan rapi.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- STATS -->
     <section class="section" style="padding-top:0" aria-label="Statistik singkat">
       <div class="container">
-        <div class="stats-grid reveal">
+        <div class="stats-grid reveal tilt" data-tilt-rx="6" data-tilt-ry="8" data-tilt-lift="-4">
           <div class="stat-item">
-            <div class="stat-value" data-count="4">4</div>
+            <div class="stat-value" data-count="4">0</div>
             <div class="stat-label">Semester Aktif</div>
           </div>
           <div class="stat-item">
-            <div class="stat-value" data-count="6">6</div>
+            <div class="stat-value" data-count="6">0</div>
             <div class="stat-label">Proyek Selesai</div>
           </div>
           <div class="stat-item">
-            <div class="stat-value" data-count="8">8</div>
+            <div class="stat-value" data-count="8">0</div>
             <div class="stat-label">Tools Dipelajari</div>
           </div>
           <div class="stat-item">
@@ -152,6 +161,7 @@
       </div>
     </section>
 
+    <!-- FEATURED PROJECTS -->
     <section class="section" aria-labelledby="featured-heading">
       <div class="container">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;" class="reveal">
@@ -159,7 +169,7 @@
             <p class="section-tag">Karya Terbaru</p>
             <h2 class="section-title" id="featured-heading">Featured Projects</h2>
           </div>
-          <a href="projects.html" class="btn btn-ghost flex items-center gap-2">
+          <a href="projects.html" class="btn btn-ghost flex items-center gap-2" data-magnetic>
             Lihat semua <i class="ph ph-arrow-right"></i>
           </a>
         </div>
@@ -167,6 +177,7 @@
       </div>
     </section>
 
+    <!-- TOOLS -->
     <section class="section" style="padding-top:0" aria-labelledby="tools-heading">
       <div class="container">
         <div class="reveal">
@@ -176,47 +187,61 @@
             Koleksi teknologi yang sedang aktif saya pelajari dan gunakan dalam proyek-proyek latihan.
           </p>
         </div>
+
         <div class="tools-grid reveal flex flex-wrap gap-3">
-          <span class="tool-chip flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-5 h-5 object-contain">HTML</span>
-          <span class="tool-chip flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-5 h-5 object-contain">CSS</span>
-          <span class="tool-chip flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-5 h-5 object-contain">JavaScript</span>
-          <span class="tool-chip flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" class="w-5 h-5 object-contain">Tailwind CSS</span>
-          <span class="tool-chip flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-5 h-5 object-contain">Git & GitHub</span>
-          <span class="tool-chip flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="w-5 h-5 object-contain">VS Code</span>
-          <span class="tool-chip flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="w-5 h-5 object-contain">Figma (belajar)</span>
-          <span class="tool-chip flex items-center gap-2">
-            <i class="ph ph-terminal-window text-green-500 text-lg"></i> Terminal (belajar)</span>
+          <span class="tool-chip flex items-center gap-2 tilt" data-tilt-rx="6" data-tilt-ry="8">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-5 h-5 object-contain">HTML
+          </span>
+          <span class="tool-chip flex items-center gap-2 tilt" data-tilt-rx="6" data-tilt-ry="8">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-5 h-5 object-contain">CSS
+          </span>
+          <span class="tool-chip flex items-center gap-2 tilt" data-tilt-rx="6" data-tilt-ry="8">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-5 h-5 object-contain">JavaScript
+          </span>
+          <span class="tool-chip flex items-center gap-2 tilt" data-tilt-rx="6" data-tilt-ry="8">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" class="w-5 h-5 object-contain">Tailwind CSS
+          </span>
+          <span class="tool-chip flex items-center gap-2 tilt" data-tilt-rx="6" data-tilt-ry="8">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-5 h-5 object-contain">Git & GitHub
+          </span>
+          <span class="tool-chip flex items-center gap-2 tilt" data-tilt-rx="6" data-tilt-ry="8">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="w-5 h-5 object-contain">VS Code
+          </span>
+          <span class="tool-chip flex items-center gap-2 tilt" data-tilt-rx="6" data-tilt-ry="8">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="w-5 h-5 object-contain">Figma (belajar)
+          </span>
+          <span class="tool-chip flex items-center gap-2 tilt" data-tilt-rx="6" data-tilt-ry="8">
+            <i class="ph ph-terminal-window text-green-500 text-lg"></i> Terminal (belajar)
+          </span>
         </div>
       </div>
     </section>
 
+    <!-- CTA -->
     <section class="section" style="padding-top:0" aria-label="Call to action">
       <div class="container">
-        <div class="card card-glass reveal" style="text-align:center;padding:4rem 2rem;border-color:var(--accent-border);box-shadow:var(--shadow-glow);">
+        <div class="card card-glass reveal tilt" data-tilt-rx="8" data-tilt-ry="10"
+             style="text-align:center;padding:4rem 2rem;border-color:var(--accent-border);box-shadow:var(--shadow-glow);">
           <p class="section-tag" style="justify-content:center;margin-bottom:1rem;">Mari Berkolaborasi</p>
           <h2 style="margin-bottom:1rem;font-size:clamp(1.5rem,3vw,2.25rem);">Ada Project atau Diskusi Menarik?</h2>
-          <p style="color:var(--text-muted);max-width:480px;margin:0 auto 2rem;">
+          <p style="color:var(--text-muted);max-width:560px;margin:0 auto 2rem;">
             Saya selalu terbuka untuk belajar hal baru, berkolaborasi, atau sekadar ngobrol tentang web dev. Jangan ragu untuk menghubungi!
           </p>
-          <a href="contact.html" class="btn btn-primary inline-flex items-center gap-2" style="font-size:1rem;padding:0.875rem 2rem;">
+
+          <a href="contact.html" class="btn btn-primary inline-flex items-center gap-2"
+             style="font-size:1rem;padding:0.95rem 2rem;" data-magnetic>
             Hubungi Saya
             <i class="ph ph-paper-plane-right text-lg"></i>
           </a>
         </div>
       </div>
     </section>
-
   </main>
 
+  <!-- Footer injected -->
   <div id="footer-container"></div>
 
+  <!-- Scripts -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script defer src="js/theme.js"></script>
   <script defer src="js/components.js"></script>

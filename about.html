@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="dark" data-accent="indigo">
+<html lang="id" data-theme="dark" data-accent="indigo" data-layout="wide">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tentang Muchamad Yazid Ardani — Biodata, pendidikan, minat, dan nilai-nilai yang saya pegang sebagai mahasiswa Informatika.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tentang Muchamad Yazid Ardani — Biodata, pendidikan, minat, dan nilai-nilai yang saya pegang sebagai mahasiswa Informatika." />
   <title>Muchamad Yazid Ardani — About</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css" />
+
   <script>
-    (function() {
+    (function () {
       var t = localStorage.getItem('pf-theme') || 'dark';
       var a = localStorage.getItem('pf-accent') || 'indigo';
       document.documentElement.setAttribute('data-theme', t);
@@ -18,15 +21,14 @@
     })();
   </script>
 </head>
-<body>
 
+<body>
   <div id="nav-container"></div>
 
-  <main id="main-content">
+  <a href="#main-content" class="sr-only sr-only-focusable">Lewati ke konten</a>
 
-    <!-- ═══════════════════════════════
-         PAGE HEADER
-    ════════════════════════════════════ -->
+  <main id="main-content">
+    <!-- PAGE HEADER -->
     <section class="section" style="padding-bottom:0;" aria-labelledby="about-heading">
       <div class="container">
         <div class="reveal">
@@ -38,34 +40,53 @@
           </p>
         </div>
 
-        <!-- Bio card utama -->
-        <div class="card card-glass reveal" style="display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start;margin-top:2rem;border-color:var(--accent-border);">
-          <!-- Avatar placeholder -->
-          <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-accent">
-            <img src="assets/img/foto 1.png" alt="Avatar Muchamad Yazid Ardani" class="w-full h-full object-cover">
+        <!-- Bio card -->
+        <div class="card card-glass reveal tilt"
+             data-tilt-rx="7" data-tilt-ry="10" data-tilt-lift="-5"
+             style="margin-top:2rem;border-color:var(--accent-border);">
+          <div class="about-bio-grid" style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+            <div style="width:140px;height:140px;border-radius:999px;overflow:hidden;border:3px solid var(--accent-border);box-shadow:0 0 22px var(--accent-glow);">
+              <img src="assets/img/profile.jpg"
+                   onerror="this.src='assets/img/foto 1.png'"
+                   alt="Foto Muchamad Yazid Ardani"
+                   style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+
+            <div>
+              <h2 style="font-size:1.55rem;margin-bottom:0.25rem;">Muchamad Yazid Ardani</h2>
+              <p style="color:var(--accent);font-family:var(--font-mono);font-size:0.9rem;margin-bottom:1rem;">
+                Mahasiswa Informatika · Semester 4
+              </p>
+
+              <p style="line-height:1.85;color:var(--text-dim);">
+                Saya mahasiswa aktif semester 4 Program Studi Informatika, Fakultas Teknologi Informasi,
+                Universitas Nahdlatul Ulama Yogyakarta. Minat utama saya ada di bidang
+                <strong style="color:var(--text)">web development</strong> dan
+                <strong style="color:var(--text)">desain antarmuka</strong>.
+              </p>
+
+              <p style="line-height:1.85;color:var(--text-dim);margin-top:0.75rem;">
+                Saya percaya belajar pemrograman bukan tentang cepat-cepatan, tapi membangun fondasi yang kuat.
+                Tiap baris kode yang saya tulis adalah bagian dari perjalanan itu.
+              </p>
+
+              <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1.2rem;">
+                <a href="projects.html" class="btn btn-primary" data-magnetic>Lihat Projects →</a>
+                <a href="contact.html" class="btn btn-outline" data-magnetic>Hubungi Saya →</a>
+              </div>
+            </div>
           </div>
-          <div>
-            <h2 style="font-size:1.5rem;margin-bottom:0.25rem;">Muchamad Yazid Ardani</h2>
-            <p style="color:var(--accent);font-family:var(--font-mono);font-size:0.85rem;margin-bottom:1rem;">Mahasiswa Informatika · Semester 4</p>
-            <p style="font-size:0.95rem;line-height:1.75;color:var(--text-dim);">
-              Saya adalah mahasiswa aktif semester 4 di Program Studi Informatika,
-              Fakultas Teknologi Informasi, Universitas Nahdlatul Ulama Yogyakarta.
-              Minat utama saya ada di bidang <strong style="color:var(--text)">web development</strong> dan
-              <strong style="color:var(--text)">desain antarmuka</strong>.
-            </p>
-            <p style="font-size:0.95rem;line-height:1.75;color:var(--text-dim);margin-top:0.75rem;">
-              Saya percaya bahwa belajar pemrograman bukan tentang cepat-cepatan, tapi tentang
-              membangun fondasi yang kuat. Tiap baris kode yang saya tulis adalah bagian dari
-              perjalanan panjang itu.
-            </p>
-          </div>
+
+          <style>
+            @media (max-width: 720px) {
+              .about-bio-grid { grid-template-columns: 1fr !important; justify-items: center; text-align: center; }
+            }
+          </style>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════
-         PENDIDIKAN / TIMELINE
-    ════════════════════════════════════ -->
+    <!-- EDUCATION -->
     <section class="section" aria-labelledby="education-heading">
       <div class="container">
         <div class="reveal">
@@ -73,168 +94,156 @@
           <h2 class="section-title" id="education-heading">Pendidikan</h2>
         </div>
 
-        <div style="max-width:640px;margin-top:2.5rem;">
+        <div style="max-width:760px;margin-top:2.25rem;">
           <div class="timeline">
-
-            <div class="timeline-item reveal">
+            <div class="timeline-item reveal tilt" data-tilt-rx="6" data-tilt-ry="8" data-tilt-lift="-4">
               <div class="timeline-year">2024 – Sekarang</div>
               <div class="timeline-title">S1 Informatika</div>
               <div class="timeline-sub">Universitas Nahdlatul Ulama Yogyakarta · Fakultas Teknologi Informasi</div>
-              <p style="font-size:0.875rem;color:var(--text-muted);margin-top:0.5rem;line-height:1.6;">
-                Sedang menempuh semester 4. Matakuliah yang saya tekuni antara lain:
-                Pemrograman Web, Algoritma & Struktur Data, UI UX, dan Basis Data.
+              <p style="color:var(--text-muted);margin-top:0.6rem;line-height:1.75;">
+                Sedang menempuh semester 4. Mata kuliah yang saya tekuni: Pemrograman Web,
+                Algoritma & Struktur Data, UI/UX, dan Basis Data.
               </p>
             </div>
 
-            <div class="timeline-item reveal reveal-delay-1">
+            <div class="timeline-item reveal reveal-delay-1 tilt" data-tilt-rx="6" data-tilt-ry="8" data-tilt-lift="-4">
               <div class="timeline-year">2019 – 2024</div>
-              <div class="timeline-title">Sekolah Menengah Kejuruan . Jurusan TKRO</div>
-              <div class="timeline-sub">SMK AL-MUNAWWIR Krapyak,Yogyakarta</div>
-              <p style="font-size:0.875rem;color:var(--text-muted);margin-top:0.5rem;line-height:1.6;">
-                Lulus dengan fokus pada Teknik Kendaraan Ringan Otomotif. Meskipun jurusan ini
-                tidak terkait langsung dengan IT, pengalaman di SMK mengajarkan saya tentang
-                kerja keras, ketelitian, dan problem-solving yang kini saya terapkan dalam
-                belajar pemrograman.
+              <div class="timeline-title">SMK · Jurusan TKRO</div>
+              <div class="timeline-sub">SMK AL-MUNAWWIR Krapyak, Yogyakarta</div>
+              <p style="color:var(--text-muted);margin-top:0.6rem;line-height:1.75;">
+                Meski tidak langsung terkait IT, pengalaman SMK mengajarkan kerja keras,
+                ketelitian, dan problem-solving yang saya bawa ke dunia pemrograman.
               </p>
             </div>
 
-            <div class="timeline-item reveal reveal-delay-2">
+            <div class="timeline-item reveal reveal-delay-2 tilt" data-tilt-rx="6" data-tilt-ry="8" data-tilt-lift="-4">
               <div class="timeline-year">Target 2028</div>
               <div class="timeline-title">Lulus S1 Informatika</div>
               <div class="timeline-sub">Target kelulusan · Sedang dikerjakan</div>
-              <p style="font-size:0.875rem;color:var(--text-muted);margin-top:0.5rem;line-height:1.6;">
-                Target selesai tepat waktu dengan portofolio proyek yang solid dan
-                kemampuan praktis yang relevan dengan industri.
+              <p style="color:var(--text-muted);margin-top:0.6rem;line-height:1.75;">
+                Target selesai tepat waktu dengan portofolio proyek yang solid dan kemampuan praktis yang relevan.
               </p>
             </div>
-
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════
-         MINAT & TUJUAN
-    ════════════════════════════════════ -->
+    <!-- INTERESTS -->
     <section class="section" style="padding-top:0;" aria-labelledby="interest-heading">
       <div class="container">
         <div class="reveal">
           <p class="section-tag">Arah Belajar</p>
           <h2 class="section-title" id="interest-heading">Minat & Tujuan</h2>
-          <p class="section-subtitle">
-            Ini bukan daftar klaim, tapi peta arah yang sedang saya tuju.
-          </p>
+          <p class="section-subtitle">Ini bukan daftar klaim, tapi peta arah yang sedang saya tuju.</p>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:0.5rem;" class="reveal">
-          <div class="card" style="grid-column: span 2;">
-            <h3 style="font-size:1rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem;">
-              <span style="font-size:1.4rem;">🎯</span> Kenapa Web Development?
+        <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:0.5rem;">
+          <div class="card reveal tilt" data-tilt-rx="7" data-tilt-ry="10" data-tilt-lift="-5" style="grid-column: 1 / -1;">
+            <h3 style="font-size:1.05rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.55rem;">
+              <span style="font-size:1.35rem;">🎯</span> Kenapa Web Development?
             </h3>
-            <p style="font-size:0.9rem;line-height:1.75;color:var(--text-dim);">
-              Web development menarik bagi saya karena hasilnya langsung bisa dirasakan oleh orang lain
-              tanpa perlu instalasi khusus. Ada kepuasan tersendiri ketika seseorang membuka URL dan
-              langsung bisa berinteraksi dengan sesuatu yang saya buat. Selain itu, ekosistemnya yang luas
-              membuat saya terus punya alasan untuk belajar hal baru setiap minggu.
+            <p style="line-height:1.85;color:var(--text-dim);">
+              Web development menarik bagi saya karena hasilnya langsung bisa dirasakan lewat URL.
+              Ekosistemnya luas, jadi saya selalu punya alasan belajar hal baru.
             </p>
           </div>
 
-          <div class="card reveal">
-            <h3 style="font-size:1rem;margin-bottom:0.75rem;">📚 Saat Ini Belajar</h3>
-            <ul style="list-style:none;font-size:0.875rem;color:var(--text-dim);">
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> JavaScript lebih dalam (async, DOM, API)</li>
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Tailwind CSS untuk styling cepat</li>
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Prinsip desain UI/UX dasar</li>
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Framework frontend (React,Next) & backend (Node.js,Fast,Express)</li>
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Python untuk backend dan automasi</li>
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Git untuk version control</li>
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Deployment dasar (Netlify, Vercel, dll)</li>
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Problem solving dan debugging yang baik</li>
+          <div class="card reveal tilt" data-tilt-rx="7" data-tilt-ry="10" data-tilt-lift="-5">
+            <h3 style="font-size:1.05rem;margin-bottom:0.75rem;">📚 Saat Ini Belajar</h3>
+            <ul style="list-style:none;color:var(--text-dim);line-height:1.85;">
+              <li style="padding:0.3rem 0;display:flex;gap:0.55rem;"><span style="color:var(--accent)">→</span> JavaScript (async, DOM, API)</li>
+              <li style="padding:0.3rem 0;display:flex;gap:0.55rem;"><span style="color:var(--accent)">→</span> Tailwind CSS</li>
+              <li style="padding:0.3rem 0;display:flex;gap:0.55rem;"><span style="color:var(--accent)">→</span> Prinsip UI/UX dasar</li>
+              <li style="padding:0.3rem 0;display:flex;gap:0.55rem;"><span style="color:var(--accent)">→</span> React/Next + Backend dasar</li>
+              <li style="padding:0.3rem 0;display:flex;gap:0.55rem;"><span style="color:var(--accent)">→</span> Python backend & automasi</li>
+              <li style="padding:0.3rem 0;display:flex;gap:0.55rem;"><span style="color:var(--accent)">→</span> Git & deployment</li>
             </ul>
           </div>
 
-          <div class="card reveal reveal-delay-1">
-            <h3 style="font-size:1rem;margin-bottom:0.75rem;">🔭 Target 1-4 Tahun ke Depan</h3>
-            <ul style="list-style:none;font-size:0.875rem;color:var(--text-dim);">
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Menguasai satu frontend framework (React/Next.js)</li>
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Memahami backend dasar (Node.js atau Python)</li>
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Punya proyek yang dipakai orang nyata</li>
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Kontribusi ke open source</li>
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Magang atau kerja freelance/part-time di bidang terkait</li>
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Membangun portofolio proyek yang solid</li>
-              <li style="padding:0.3rem 0;display:flex;gap:0.5rem;"><span style="color:var(--accent)">→</span> Terus belajar dan adaptasi dengan teknologi baru</li>
+          <div class="card reveal reveal-delay-1 tilt" data-tilt-rx="7" data-tilt-ry="10" data-tilt-lift="-5">
+            <h3 style="font-size:1.05rem;margin-bottom:0.75rem;">🔭 Target 1–4 Tahun</h3>
+            <ul style="list-style:none;color:var(--text-dim);line-height:1.85;">
+              <li style="padding:0.3rem 0;display:flex;gap:0.55rem;"><span style="color:var(--accent)">→</span> Kuasai React/Next.js</li>
+              <li style="padding:0.3rem 0;display:flex;gap:0.55rem;"><span style="color:var(--accent)">→</span> Backend dasar (Node/Python)</li>
+              <li style="padding:0.3rem 0;display:flex;gap:0.55rem;"><span style="color:var(--accent)">→</span> Punya proyek dipakai orang nyata</li>
+              <li style="padding:0.3rem 0;display:flex;gap:0.55rem;"><span style="color:var(--accent)">→</span> Kontribusi open source</li>
+              <li style="padding:0.3rem 0;display:flex;gap:0.55rem;"><span style="color:var(--accent)">→</span> Magang / freelance</li>
             </ul>
           </div>
         </div>
+
+        <style>
+          @media (max-width: 880px) {
+            .about-grid { grid-template-columns: 1fr !important; }
+          }
+        </style>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════
-         NILAI / PRINSIP
-    ════════════════════════════════════ -->
+    <!-- VALUES -->
     <section class="section" style="padding-top:0;" aria-labelledby="values-heading">
       <div class="container">
         <div class="reveal">
           <p class="section-tag">Prinsip</p>
           <h2 class="section-title" id="values-heading">Nilai yang Saya Pegang</h2>
-          <p class="section-subtitle">
-            Panduan tak tertulis yang selalu saya ingat saat belajar dan bekerja.
-          </p>
+          <p class="section-subtitle">Panduan tak tertulis yang selalu saya ingat saat belajar dan bekerja.</p>
         </div>
 
         <div class="values-grid">
-          <div class="value-card reveal reveal-delay-1">
+          <div class="value-card reveal tilt" data-tilt-rx="7" data-tilt-ry="10" data-tilt-lift="-5">
             <span class="value-emoji">🧱</span>
             <div class="value-title">Fondasi Dulu</div>
-            <div class="value-desc">Belajar dari dasar tanpa skip. Memahami "kenapa" sebelum menghafal "bagaimana".</div>
+            <div class="value-desc">Memahami “kenapa” sebelum “bagaimana”.</div>
           </div>
-        <div class="value-card reveal reveal-delay-1">
+
+          <div class="value-card reveal reveal-delay-1 tilt" data-tilt-rx="7" data-tilt-ry="10" data-tilt-lift="-5">
             <span class="value-emoji">⚡</span>
-            <div class="value-title">Praktik > Teori</div>
-            <div class="value-desc">Langsung praktek dengan proyek kecil. Belajar sambil melakukan, bukan cuma membaca.</div>
+            <div class="value-title">Praktik & Konsisten</div>
+            <div class="value-desc">Belajar sambil melakukan dengan proyek kecil.</div>
           </div>
-        <div class="value-card reveal reveal-delay-2">
+
+          <div class="value-card reveal reveal-delay-2 tilt" data-tilt-rx="7" data-tilt-ry="10" data-tilt-lift="-5">
             <span class="value-emoji">🤖</span>
-            <div class="value-title">Pelajari AI untuk Meningkatkan Produktivitas Developer</div>
-            <div class="value-desc">Gunakan AI untuk mempercepat proses debugging, menulis kode, dan menghasilkan ide baru.</div>
+            <div class="value-title">AI untuk Produktivitas</div>
+            <div class="value-desc">Memakai AI untuk ide, debugging, dan efisiensi.</div>
           </div>
-          <div class="value-card reveal reveal-delay-2">
+
+          <div class="value-card reveal reveal-delay-2 tilt" data-tilt-rx="7" data-tilt-ry="10" data-tilt-lift="-5">
             <span class="value-emoji">🔁</span>
             <div class="value-title">Konsisten</div>
-            <div class="value-desc">Sedikit setiap hari lebih baik dari banyak tapi jarang. Progress kecil yang berulang adalah kekuatan nyata.</div>
+            <div class="value-desc">Sedikit tiap hari lebih kuat dari banyak tapi jarang.</div>
           </div>
-          <div class="value-card reveal reveal-delay-3">
+
+          <div class="value-card reveal reveal-delay-3 tilt" data-tilt-rx="7" data-tilt-ry="10" data-tilt-lift="-5">
             <span class="value-emoji">🤝</span>
             <div class="value-title">Terbuka Belajar</div>
-            <div class="value-desc">Tidak malu bertanya dan menerima kritik. Feedback adalah bahan bakar pertumbuhan.</div>
+            <div class="value-desc">Feedback adalah bahan bakar pertumbuhan.</div>
           </div>
-          <div class="value-card reveal reveal-delay-4">
+
+          <div class="value-card reveal reveal-delay-4 tilt" data-tilt-rx="7" data-tilt-ry="10" data-tilt-lift="-5">
             <span class="value-emoji">📝</span>
             <div class="value-title">Dokumentasi</div>
-            <div class="value-desc">Kode yang baik adalah yang bisa dibaca orang lain (dan diri sendiri tiga bulan kemudian).</div>
+            <div class="value-desc">Kode bagus harus bisa dibaca lagi nanti.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════
-         CTA
-    ════════════════════════════════════ -->
+    <!-- CTA -->
     <section class="section" style="padding-top:0;" aria-label="Navigasi ke halaman lain">
       <div class="container">
         <div style="display:flex;gap:1rem;flex-wrap:wrap;" class="reveal">
-          <a href="projects.html" class="btn btn-primary">Lihat Projects →</a>
-          <a href="resume.html" class="btn btn-outline">Cek Resume →</a>
-          <a href="contact.html" class="btn btn-outline">Hubungi Saya →</a>
+          <a href="projects.html" class="btn btn-primary" data-magnetic>Lihat Projects →</a>
+          <a href="resume.html" class="btn btn-outline" data-magnetic>Cek Resume →</a>
+          <a href="contact.html" class="btn btn-outline" data-magnetic>Hubungi Saya →</a>
         </div>
       </div>
     </section>
-
   </main>
 
   <div id="footer-container"></div>
 
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script defer src="js/theme.js"></script>
   <script defer src="js/components.js"></script>
   <script defer src="js/animations.js"></script>

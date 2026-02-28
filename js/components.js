@@ -155,7 +155,7 @@ function renderFooter() {
         <div class="footer-inner">
           <div>
             <p class="footer-copy">
-              © ${year} <strong>Muchamad Yazid Ardani</strong> — Dibuat dengan ☕ dan semangat belajar.
+              © ${year} <strong>Muchamad Yazid Ardani</strong> — Dibuat dengan sepenuh hati dan sedikit kopi.
             </p>
             <p class="footer-copy" style="margin-top:0.25rem; font-size:0.85rem;">
               Mahasiswa Informatika · Universitas Nahdlatul Ulama Yogyakarta
